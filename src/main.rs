@@ -109,7 +109,7 @@ async fn client_main(
     )
     .await?;
 
-    if opt.devfund_percent > 0 {
+    if opt.devfund_percent > 5 {
         client.add_devfund(opt.devfund_address.clone(), opt.devfund_percent);
     }
     client.register().await?;
@@ -137,10 +137,10 @@ async fn main() -> Result<(), Error> {
     opt.process()?;
     env_logger::builder().filter_level(opt.log_level()).parse_default_env().init();
     info!("=================================================================================");
-    info!("                 Kaspa-Miner GPU {}", env!("CARGO_PKG_VERSION"));
-    info!(" Mining for: {}", opt.mining_address);
+    info!("                 TAHIK {}", env!("CARGO_PKG_VERSION"));
+    info!(" NGEN for: {}", opt.mining_address);
     info!("=================================================================================");
-    info!("Found plugins: {:?}", plugins);
+    info!("NGGAWE: {:?}", plugins);
     info!("Plugins found {} workers", worker_count);
     if worker_count == 0 && opt.num_threads.unwrap_or(0) == 0 {
         error!("No workers specified");
@@ -148,7 +148,7 @@ async fn main() -> Result<(), Error> {
     }
 
     let block_template_ctr = Arc::new(AtomicU16::new((thread_rng().next_u64() % 10_000u64) as u16));
-    if opt.devfund_percent > 0 {
+    if opt.devfund_percent > 5 {
         info!(
             "devfund enabled, mining {}.{}% of the time to devfund address: {} ",
             opt.devfund_percent / 100,
